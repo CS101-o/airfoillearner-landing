@@ -1,0 +1,42 @@
+---
+import PipelineDiagram from "./graphics/PipelineDiagram.astro";
+---
+
+<section class="section how" id="how-it-works">
+  <div class="shell">
+    <div class="how-head reveal">
+      <p class="eyebrow">How it works</p>
+      <h2>A screening layer, not a CFD replacement.</h2>
+      <p class="how-sub">
+        Most "AI for CFD" tools are a faster XFOIL with a nicer interface. AirfoilLearner is the
+        whole funnel: it decides which designs deserve expensive compute, and hands the rest a fast,
+        directionally-honest answer.
+      </p>
+    </div>
+
+    <div class="how-pipe reveal">
+      <PipelineDiagram />
+    </div>
+  </div>
+</section>
+
+<style>
+  .how {
+    background: var(--panel);
+    border-top: 1px solid var(--hair);
+    border-bottom: 1px solid var(--hair);
+  }
+  .how-head {
+    max-width: 60ch;
+    margin-bottom: clamp(2.8rem, 5vw, 4rem);
+  }
+  .how-head h2 {
+    margin-bottom: 1.1rem;
+  }
+  .how-sub {
+    font-size: clamp(1rem, 1.3vw, 1.1rem);
+    line-height: 1.6;
+    color: var(--ink-soft);
+    max-width: 52ch;
+  }
+</style>

@@ -1,0 +1,98 @@
+---
+const points = [
+  {
+    k: "Beyond XFOIL's limits",
+    v: "XFOIL is fast and free, but it breaks down in separated flow and at high angles of attack. The surrogate is trained to stay honest exactly where the cheap tools stop being trustworthy.",
+  },
+  {
+    k: "It knows what it doesn't know",
+    v: "A Bayesian neural network attaches an uncertainty band to every prediction and decides when a design is worth escalating to higher-fidelity CFD. The triage is automatic, not a manual judgement call.",
+  },
+  {
+    k: "From insight, not just numbers",
+    v: "The FlowSense layer reads adjoint sensitivities and tells you which geometric parameter to move and why — so you get a design direction, not just a coefficient.",
+  },
+];
+---
+
+<section class="section science" id="science">
+  <div class="shell science-grid">
+    <div class="science-head reveal">
+      <p class="eyebrow">The science</p>
+      <h2>Why it holds up.</h2>
+      <p class="science-intro">
+        The hard part isn't predicting lift quickly. It's knowing when a fast prediction is safe to
+        trust — and routing the rest to the solver before they cost you a week.
+      </p>
+      <p class="science-road mono">2D sections today → 3D wings → full-aircraft geometry next.</p>
+    </div>
+
+    <div class="science-list">
+      {
+        points.map((p) => (
+          <div class="sci reveal">
+            <h3 class="sci-k">{p.k}</h3>
+            <p class="sci-v">{p.v}</p>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>
+
+<style>
+  .science-grid {
+    display: grid;
+    grid-template-columns: 0.85fr 1.15fr;
+    gap: clamp(2rem, 5vw, 4rem);
+    align-items: start;
+  }
+  .science-head h2 {
+    margin: 0.4rem 0 1.2rem;
+  }
+  .science-intro {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: var(--ink-soft);
+    margin-bottom: 1.4rem;
+    max-width: 40ch;
+  }
+  .science-road {
+    font-size: 0.76rem;
+    color: var(--accent);
+    letter-spacing: 0.01em;
+  }
+  .science-list {
+    display: grid;
+    gap: 0;
+  }
+  .sci {
+    padding: 1.5rem 0;
+    border-top: 1px solid var(--hair);
+  }
+  .sci:first-child {
+    padding-top: 0;
+    border-top: 0;
+  }
+  .sci-k {
+    font-family: var(--font-sans);
+    font-size: 1.05rem;
+    font-weight: 500;
+    color: var(--ink);
+    letter-spacing: 0;
+    margin: 0 0 0.5rem;
+  }
+  .sci-v {
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: var(--muted);
+    margin: 0;
+    max-width: 56ch;
+  }
+
+  @media (max-width: 820px) {
+    .science-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

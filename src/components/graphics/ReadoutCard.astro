@@ -1,0 +1,77 @@
+---
+interface Row {
+  label: string;
+  value: string;
+  hot?: boolean;
+}
+
+interface Props {
+  rows?: Row[];
+}
+
+const {
+  rows = [
+    { label: "section", value: "NACA 4412" },
+    { label: "α", value: "10.0°" },
+    { label: "Re", value: "2.0×10⁶" },
+    { label: "Cl", value: "1.04" },
+    { label: "L/D", value: "146" },
+    { label: "solve", value: "1.9 ms", hot: true },
+  ],
+} = Astro.props;
+
+const head = rows.slice(0, 3);
+const tail = rows.slice(3);
+---
+
+<div class="readout">
+  {
+    head.map((r) => (
+      <div class="row">
+        <span class="k">{r.label}</span>
+        <span class="v">{r.value}</span>
+      </div>
+    ))
+  }
+  <hr class="dash" />
+  {
+    tail.map((r) => (
+      <div class="row">
+        <span class="k">{r.label}</span>
+        <span class={r.hot ? "v hot" : "v"}>{r.value}</span>
+      </div>
+    ))
+  }
+</div>
+
+<style>
+  .readout {
+    font-family: var(--font-mono);
+    font-size: 0.78rem;
+    background: var(--paper-2);
+    border: 1px solid var(--hair-strong);
+    border-radius: var(--radius);
+    padding: 0.85rem 1rem;
+    min-width: 168px;
+  }
+  .row {
+    display: flex;
+    justify-content: space-between;
+    gap: 1.25rem;
+    line-height: 1.95;
+  }
+  .k {
+    color: var(--muted);
+  }
+  .v {
+    color: var(--ink);
+  }
+  .hot {
+    color: var(--accent);
+  }
+  .dash {
+    border: 0;
+    border-top: 1px dashed var(--hair-strong);
+    margin: 0.4rem 0;
+  }
+</style>

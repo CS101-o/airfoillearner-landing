@@ -1,0 +1,89 @@
+---
+import { DEMO_URL, NAV_LINKS } from "../data/site";
+---
+
+<header class="nav">
+  <div class="shell nav-inner">
+    <a class="brand" href="#top" aria-label="AirfoilLearner home">
+      <svg width="30" height="16" viewBox="0 0 60 26" aria-hidden="true">
+        <path d="M4 18 C18 7, 40 5, 58 13 C40 16, 22 17, 4 18 Z" fill="var(--ink)"></path>
+        <path d="M4 18 C18 7, 40 5, 58 13" fill="none" stroke="var(--accent)" stroke-width="1.4"
+        ></path>
+      </svg>
+      <span class="brand-name">AirfoilLearner</span>
+    </a>
+
+    <nav class="links" aria-label="Primary">
+      {NAV_LINKS.map((l) => <a href={l.href}>{l.label}</a>)}
+    </nav>
+
+    <a class="btn btn-ink nav-cta" href={DEMO_URL} target="_blank" rel="noopener">
+      try the demo
+    </a>
+  </div>
+</header>
+
+<script>
+  const nav = document.querySelector(".nav");
+  const onScroll = () => nav?.classList.toggle("is-scrolled", window.scrollY > 8);
+  onScroll();
+  window.addEventListener("scroll", onScroll, { passive: true });
+</script>
+
+<style>
+  .nav {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    background: var(--paper);
+    border-bottom: 1px solid transparent;
+    transition: border-color 0.2s ease;
+  }
+  .nav.is-scrolled {
+    border-bottom-color: var(--hair);
+  }
+  .nav-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 66px;
+  }
+  .brand {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    text-decoration: none;
+  }
+  .brand-name {
+    font-family: var(--font-mono);
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: var(--ink);
+    letter-spacing: -0.01em;
+  }
+  .links {
+    display: flex;
+    gap: 1.6rem;
+    font-family: var(--font-mono);
+    font-size: 0.78rem;
+    letter-spacing: 0.02em;
+  }
+  .links a {
+    color: var(--muted);
+    text-decoration: none;
+    transition: color 0.15s ease;
+  }
+  .links a:hover {
+    color: var(--ink);
+  }
+  .nav-cta {
+    padding: 0.55rem 1.05rem;
+    font-size: 0.8rem;
+  }
+
+  @media (max-width: 720px) {
+    .links {
+      display: none;
+    }
+  }
+</style>

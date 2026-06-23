@@ -1,0 +1,90 @@
+---
+const metrics = [
+  { value: "1.9 ms", label: "to predict Cl, Cd and Cm for a 2D section", sub: "NACA 4412 · Re 2.0×10⁶" },
+  { value: "9.5–14.8%", label: "of candidates ever needed full RANS in published runs", sub: "the rest handled by the surrogate" },
+  { value: "50–70%", label: "less training data via active sampling", sub: "vs uniform sampling of the design space" },
+  { value: "50,000+", label: "CFD simulations behind the model", sub: "UIUC database + generated data" },
+];
+---
+
+<section class="section proof" id="proof">
+  <div class="shell">
+    <div class="proof-head reveal">
+      <p class="eyebrow eyebrow--muted">The numbers</p>
+      <h2>Fast where it can be. Careful where it counts.</h2>
+    </div>
+
+    <div class="metric-grid">
+      {
+        metrics.map((m) => (
+          <div class="metric reveal">
+            <p class="m-value">{m.value}</p>
+            <p class="m-label">{m.label}</p>
+            <p class="m-sub">{m.sub}</p>
+          </div>
+        ))
+      }
+    </div>
+
+    <p class="proof-note reveal">
+      AirfoilLearner is at research stage. These figures come from our pipeline and the published
+      literature it's built on — not marketing rounding.
+    </p>
+  </div>
+</section>
+
+<style>
+  .proof-head {
+    margin-bottom: clamp(2.4rem, 4vw, 3.2rem);
+  }
+  .proof-head h2 {
+    margin-top: 0.4rem;
+  }
+  .metric-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
+  }
+  .metric {
+    border-top: 2px solid var(--ink);
+    padding-top: 1rem;
+  }
+  .m-value {
+    font-family: var(--font-mono);
+    font-size: clamp(1.5rem, 2.6vw, 1.95rem);
+    font-weight: 500;
+    color: var(--accent);
+    letter-spacing: -0.01em;
+    margin: 0 0 0.7rem;
+  }
+  .m-label {
+    font-size: 0.92rem;
+    line-height: 1.45;
+    color: var(--ink);
+    margin: 0 0 0.4rem;
+  }
+  .m-sub {
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    color: var(--muted);
+    margin: 0;
+  }
+  .proof-note {
+    font-size: 0.9rem;
+    color: var(--muted);
+    max-width: 60ch;
+    margin-top: clamp(2rem, 4vw, 3rem);
+  }
+
+  @media (max-width: 880px) {
+    .metric-grid {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.6rem 1.2rem;
+    }
+  }
+  @media (max-width: 480px) {
+    .metric-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

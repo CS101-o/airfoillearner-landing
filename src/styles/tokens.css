@@ -1,0 +1,26 @@
+:root {
+  /* Paper / ink palette — fixed light "blueprint on paper" scene */
+  --paper: #f4f1e9;
+  --paper-2: #f8f5ed;
+  --panel: #ece7db;
+  --ink: #1c1b18;
+  --ink-soft: #4a463e;
+  --muted: #6b675d;
+  --hair: #dad4c4;
+  --hair-strong: #cfc9b9;
+  --grid: #ddd7c7;
+  --accent: #c8431e;
+  --accent-deep: #a6371a;
+
+  /* Type */
+  --font-serif: "Newsreader", Georgia, "Times New Roman", serif;
+  --font-sans: "IBM Plex Sans", system-ui, -apple-system, sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, "SFMono-Regular", monospace;
+
+  /* Layout */
+  --shell: 1120px;
+  --pad: clamp(1.25rem, 4vw, 2.5rem);
+  --section-y: clamp(4rem, 9vw, 7.5rem);
+  --radius: 10px;
+  --radius-sm: 7px;
+}

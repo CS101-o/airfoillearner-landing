@@ -1,0 +1,131 @@
+---
+const stages = [
+  {
+    n: "01",
+    title: "XFOIL sweep",
+    desc: "Every candidate geometry gets a fast 2D pass in under 5 seconds.",
+  },
+  {
+    n: "02",
+    title: "BNN uncertainty",
+    desc: "A Bayesian net scores where the surrogate is unsure and flags bad training data.",
+  },
+  {
+    n: "03",
+    title: "RANS escalation",
+    desc: "Only the top 10–20 candidates are escalated to expensive higher-fidelity CFD.",
+  },
+  {
+    n: "04",
+    title: "Surrogate + FlowSense",
+    desc: "Real-time Cl, Cd, Cm plus a plain-language read on which parameter to move.",
+  },
+  {
+    n: "05",
+    title: "OpenFOAM handoff",
+    desc: "The shortlist drops cleanly into your 3D solver — warm-started, not cold.",
+  },
+];
+---
+
+<div class="pipe">
+  {
+    stages.map((s, i) => (
+      <div class="stage">
+        <div class="rail">
+          <span class="dot" />
+          {i < stages.length - 1 && <span class="line" />}
+        </div>
+        <p class="n">{s.n}</p>
+        <h3 class="t">{s.title}</h3>
+        <p class="d">{s.desc}</p>
+      </div>
+    ))
+  }
+</div>
+
+<style>
+  .pipe {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 0;
+  }
+  .stage {
+    padding: 0 1.1rem;
+    border-left: 1px solid var(--hair);
+  }
+  .stage:first-child {
+    padding-left: 0;
+    border-left: 0;
+  }
+  .rail {
+    position: relative;
+    height: 14px;
+    margin-bottom: 1rem;
+  }
+  .dot {
+    position: absolute;
+    left: 0;
+    top: 3px;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--accent);
+  }
+  .line {
+    position: absolute;
+    left: 8px;
+    right: -1.1rem;
+    top: 6.5px;
+    border-top: 1px dashed var(--hair-strong);
+  }
+  .n {
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    letter-spacing: 0.14em;
+    color: var(--muted);
+    margin: 0 0 0.5rem;
+  }
+  .t {
+    font-family: var(--font-sans);
+    font-size: 1rem;
+    font-weight: 500;
+    color: var(--ink);
+    letter-spacing: 0;
+    margin: 0 0 0.5rem;
+  }
+  .d {
+    font-size: 0.88rem;
+    line-height: 1.55;
+    color: var(--muted);
+    margin: 0;
+  }
+
+  @media (max-width: 760px) {
+    .pipe {
+      grid-template-columns: 1fr;
+    }
+    .stage {
+      border-left: 1px solid var(--hair);
+      padding: 0 0 1.6rem 1.4rem;
+    }
+    .stage:first-child {
+      padding-left: 1.4rem;
+      border-left: 1px solid var(--hair);
+    }
+    .stage:last-child {
+      padding-bottom: 0;
+    }
+    .rail {
+      height: 0;
+      margin-bottom: 0;
+    }
+    .dot {
+      left: -1.4rem;
+      top: 4px;
+    }
+    .line {
+      display: none;
+    }
+  }
+</style>

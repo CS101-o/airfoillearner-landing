@@ -1,0 +1,113 @@
+---
+import { DEMO_URL } from "../data/site";
+import AirfoilSchematic from "./graphics/AirfoilSchematic.astro";
+import ReadoutCard from "./graphics/ReadoutCard.astro";
+---
+
+<section class="hero" id="top">
+  <div class="hero-grid-bg" aria-hidden="true"></div>
+  <div class="shell hero-inner">
+    <div class="hero-copy reveal">
+      <p class="eyebrow">ML surrogate · upstream of CFD</p>
+      <h1>
+        Screen an airfoil in 1.9&nbsp;ms —<br class="brk" /> before you spend hours in CFD.
+      </h1>
+      <p class="hero-sub">
+        AirfoilLearner predicts Cl, Cd and Cm for any 2D section in real time. Fail fast on the weak
+        geometries and save the cluster for the designs worth simulating. It sits upstream of your
+        solver. It doesn't replace it.
+      </p>
+      <div class="hero-btns">
+        <a class="btn btn-primary" href={DEMO_URL} target="_blank" rel="noopener">
+          try the live demo →
+        </a>
+        <a class="btn btn-outline" href="#how-it-works">how it works</a>
+      </div>
+      <p class="hero-proof">
+        80+ aerospace engineers interviewed · 60+ on the waitlist<br />
+        trained on 50,000+ CFD simulations · UIUC airfoil database
+      </p>
+    </div>
+
+    <div class="hero-art reveal">
+      <AirfoilSchematic />
+      <div class="hero-readout">
+        <ReadoutCard />
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .hero {
+    position: relative;
+    overflow: hidden;
+  }
+  .hero-grid-bg {
+    position: absolute;
+    inset: 0;
+    background-image: radial-gradient(115% 95% at 72% 28%, rgba(244, 241, 233, 0) 30%, var(--paper) 76%),
+      linear-gradient(var(--grid) 0.5px, transparent 0.5px),
+      linear-gradient(90deg, var(--grid) 0.5px, transparent 0.5px);
+    background-size: 100% 100%, 38px 38px, 38px 38px;
+    pointer-events: none;
+  }
+  .hero-inner {
+    position: relative;
+    display: grid;
+    grid-template-columns: 1.04fr 0.96fr;
+    align-items: center;
+    gap: clamp(1.5rem, 4vw, 3.5rem);
+    padding-block: clamp(3rem, 7vw, 5.5rem);
+  }
+  .hero-copy h1 {
+    margin-bottom: 1.4rem;
+  }
+  .hero-sub {
+    font-size: clamp(1rem, 1.4vw, 1.12rem);
+    line-height: 1.6;
+    color: var(--ink-soft);
+    max-width: 38ch;
+    margin-bottom: 1.9rem;
+  }
+  .hero-btns {
+    display: flex;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+    margin-bottom: 1.8rem;
+  }
+  .hero-proof {
+    font-family: var(--font-mono);
+    font-size: 0.74rem;
+    line-height: 1.85;
+    color: var(--muted);
+    border-top: 1px solid var(--hair);
+    padding-top: 1rem;
+    max-width: 42ch;
+  }
+  .hero-art {
+    position: relative;
+  }
+  .hero-readout {
+    position: absolute;
+    right: 0;
+    bottom: 0.5rem;
+  }
+
+  @media (max-width: 880px) {
+    .hero-inner {
+      grid-template-columns: 1fr;
+      gap: 2.5rem;
+    }
+    .brk {
+      display: none;
+    }
+    .hero-art {
+      max-width: 460px;
+    }
+    .hero-grid-bg {
+      -webkit-mask-image: radial-gradient(140% 70% at 50% 15%, #000 30%, transparent 80%);
+      mask-image: radial-gradient(140% 70% at 50% 15%, #000 30%, transparent 80%);
+    }
+  }
+</style>
