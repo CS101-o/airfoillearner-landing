@@ -1,0 +1,2 @@
+/demo    https://airfoillearner2.netlify.app/demo    200
+/demo/*  https://airfoillearner2.netlify.app/demo/:splat  200

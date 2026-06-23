@@ -2,7 +2,7 @@
 // DEMO_URL: today the live demo sits at the Netlify URL (and apex airfoillearner.com).
 // Once the landing takes the apex domain, repoint the demo to demo.airfoillearner.com
 // and change DEMO_URL to 'https://demo.airfoillearner.com'.
-export const DEMO_URL = 'https://airfoillearner.netlify.app';
+export const DEMO_URL = '/demo';
 
 export const CONTACT_EMAIL = 'hello@airfoillearner.com';
 export const WAITLIST_URL = `mailto:${CONTACT_EMAIL}?subject=AirfoilLearner%20waitlist`;
