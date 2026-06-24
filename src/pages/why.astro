@@ -1,0 +1,699 @@
+---
+import Base from "../layouts/Base.astro";
+import Nav from "../components/Nav.astro";
+import Footer from "../components/Footer.astro";
+import { DEMO_URL, WAITLIST_URL } from "../data/site";
+
+const costStats = [
+  { figure: "£150", label: "idle salary cost per CFD run, before a single compute invoice is counted" },
+  { figure: "£7,500", label: "to run a 50-run optimisation project — per engineer" },
+  { figure: "£22,500", label: "the same project costs a team of three, before the best design is found" },
+];
+
+const capabilities = [
+  { n: "1.9ms", label: "Browser inference", body: "No install, no licence, no IT approval. An engineer opens a tab and runs." },
+  { n: "100s", label: "Designs per session", body: "Evaluate geometries in the time it used to take to set up one solver run." },
+  { n: "±σ", label: "Validity envelope", body: "We tell you when to trust the result. No competitor does this." },
+  { n: "£0", label: "Procurement", body: "An engineer can be running in minutes. No budget owner, no purchase order." },
+];
+
+const competitors = [
+  {
+    type: "Enterprise incumbents",
+    body: "Large simulation software vendors sell enterprise licences with IT procurement, purchase orders, and security reviews baked in. Their sales cycles run 6–18 months. Their smallest customer has more engineers than most of our customers have employees. The SME engineer never gets through their sales funnel.",
+    contrast: "We land in a day.",
+  },
+  {
+    type: "ML surrogate platforms targeting OEMs",
+    body: "These tools require a dedicated data engineering team on the customer side, minimum six-figure contracts, and custom model training pipelines. They are built for organisations with hundreds of engineers and a dedicated MLOps function.",
+    contrast: "We serve every customer they will never reach.",
+  },
+  {
+    type: "Developer-first frameworks",
+    body: "Some players offer toolkits for ML developers who want to build their own surrogate pipeline from scratch. Their user writes Python. Our user is a mechanical engineer who wants to run simulations, not write code.",
+    contrast: "Different buyer, different job, different product.",
+  },
+  {
+    type: "Well-funded deep-tech startups",
+    body: "Several well-funded competitors target large R&D teams only, with developer-first APIs and no browser product. No SME motion. No zero-procurement path.",
+    contrast: "We own the market they don't want.",
+  },
+];
+
+const advantages = [
+  { n: "01", label: "Distribution they can't replicate", body: "Browser-first, zero procurement. An engineer runs in minutes with no IT sign-off. Incumbents can't undo six-figure licence structures." },
+  { n: "02", label: "The validity envelope", body: "We don't just give a number — we tell you when to trust it. No SME competitor has this. It is the difference between a toy and a tool." },
+  { n: "03", label: "Pilot-driven accuracy credibility", body: "Our first industry pilot produces validated accuracy data on a real-world application against real measured data. That becomes the sales weapon for everything that follows." },
+  { n: "04", label: "B2C engineer motion", body: "We reach individual CFD engineers directly through domain networks. By the time a competitor looks down-market, we own the relationship." },
+];
+
+const phases = [
+  {
+    phase: "Phase 1",
+    window: "Now → 6 months",
+    title: "Land and prove",
+    body: "Close the current industry pilot as a paid engagement. Use real-world data to produce a one-page accuracy benchmark — specific error numbers, real engineer quotes, validated against measured data. Convert the existing waitlist. Get the first 5 paying subscribers at £80/mo.",
+  },
+  {
+    phase: "Phase 2",
+    window: "3–9 months",
+    title: "Expand through domain networks",
+    body: "University and alumni networks for warm introductions into aerospace SMEs. Apply to clean energy and aerospace accelerator programmes. Target CFD consultancies as distribution — one consultancy using AirfoilLearner on every client project is worth more than 50 individual subscriptions. Activate international connections for a second named pilot outside the UK.",
+  },
+  {
+    phase: "Phase 3",
+    window: "6–12 months",
+    title: "Raise",
+    body: "One paid pilot with published accuracy data. 20+ paying subscribers. Two or three domain-credible advisors. Warm introductions into the deep-tech investor community. Target £300k–£500k pre-seed. Use of funds: one senior CFD engineer or advisor, expansion into the next geometry domain beyond airfoils.",
+  },
+];
+
+const marketStats = [
+  { figure: "£200M", label: "Serviceable obtainable market" },
+  { figure: "£2–5B", label: "Serviceable addressable market" },
+  { figure: "£25B", label: "Total addressable market" },
+];
+
+const proofStats = [
+  { figure: "80+", label: "aerospace engineers interviewed" },
+  { figure: "60+", label: "on the waitlist, growing 200% month on month" },
+  { figure: "50,000+", label: "simulations in training corpus" },
+  { figure: "1", label: "named industry pilot confirmed" },
+];
+---
+
+<Base
+  title="Why AirfoilLearner — we didn't make CFD faster, we made it agile"
+  description="The case for AirfoilLearner: the problem with CFD economics, what we built, our market, and why the competitive landscape is ours to own."
+>
+  <Nav />
+  <main>
+
+    <!-- ── Page hero ── -->
+    <section class="section why-hero">
+      <div class="shell">
+        <div class="why-hero-inner reveal">
+          <p class="eyebrow eyebrow--muted">Why AirfoilLearner</p>
+          <h1 class="why-tagline">We didn't make CFD&nbsp;faster.<br />We made it&nbsp;agile.</h1>
+          <p class="why-sub lead">
+            Every other player in this space is building a faster solver. We built a different
+            workflow — one that runs before the solver opens, costs nothing to start, and reaches
+            the engineers that enterprise tools have never served.
+          </p>
+          <div class="why-hero-btns">
+            <a class="btn btn-primary" href={DEMO_URL}>try the live demo →</a>
+            <a class="btn btn-outline" href={WAITLIST_URL}>join the waitlist</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── Section 1: The problem ── -->
+    <section class="section why-problem" id="the-problem">
+      <div class="shell">
+        <div class="prose-block reveal">
+          <p class="eyebrow">The problem</p>
+          <h2>Engineers spend half their project waiting, not&nbsp;thinking.</h2>
+          <p class="body-copy">
+            One simulation run costs £150 in idle salary before a single compute invoice is
+            counted. A 50-run optimisation project burns £7,500. A team of three doing the same
+            project: £22,500 — gone before the best design is even found.
+          </p>
+          <p class="body-copy">
+            The result is conservative engineering. When feedback takes 48 hours, engineers batch
+            their guesses, run once, and stop exploring. Slowness doesn't just waste time — it
+            changes how people think.
+          </p>
+        </div>
+
+        <div class="stat-row reveal">
+          {costStats.map((s) => (
+            <div class="stat">
+              <p class="figure">{s.figure}</p>
+              <p class="figure-label">{s.label}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- ── Section 2: What we built ── -->
+    <section class="section why-built" id="what-we-built">
+      <div class="shell">
+        <div class="prose-block reveal">
+          <p class="eyebrow">What we built</p>
+          <h2>The agile layer in front of&nbsp;CFD.</h2>
+          <p class="body-copy">
+            A surrogate model that runs in the browser in 1.9ms — no setup, no meshing, no
+            licences, no waiting. Engineers test hundreds of designs in the time it used to take
+            to set up one run. And unlike any other surrogate on the market, ours comes with a
+            validity envelope: it tells you when to trust the result.
+          </p>
+          <p class="body-copy">
+            This is what agile software development did for product teams in the 2000s. We're
+            doing it for engineering teams now.
+          </p>
+        </div>
+
+        <div class="cap-grid reveal">
+          {capabilities.map((c) => (
+            <div class="cap-card">
+              <p class="cap-n">{c.n}</p>
+              <p class="cap-label">{c.label}</p>
+              <p class="cap-body">{c.body}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- ── Section 3: Our vertical ── -->
+    <section class="section why-vertical" id="our-vertical">
+      <div class="shell">
+        <div class="vertical-grid">
+          <div class="reveal">
+            <p class="eyebrow">Our vertical</p>
+            <h2>A market enterprise CFD tools were never built&nbsp;for.</h2>
+            <p class="body-copy">
+              Approximately 6,000 SME aerospace and renewables teams across the UK and EU. Teams
+              of 2–20 engineers. No dedicated IT. No procurement budget. No six-month software
+              evaluation cycle.
+            </p>
+            <p class="body-copy">
+              These teams have the same physics problems as the largest aerospace manufacturers —
+              they just can't access their tools. Our beachhead is offshore wind and UAV design —
+              sectors where iteration speed directly translates to competitive advantage, and where
+              our first industry pilot has already validated the workflow.
+            </p>
+            <ul class="vertical-list">
+              <li>Offshore wind turbine design</li>
+              <li>UAV and drone aerodynamics</li>
+              <li>Aerospace SME component design</li>
+              <li>Renewables R&D teams</li>
+              <li>CFD consultancies serving any of the above</li>
+            </ul>
+          </div>
+
+          <div class="market-panel reveal">
+            {marketStats.map((s) => (
+              <div class="market-stat">
+                <p class="figure">{s.figure}</p>
+                <p class="figure-label">{s.label}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── Section 4: Competitive difference ── -->
+    <section class="section why-comp" id="competitive-difference">
+      <div class="shell">
+        <div class="prose-block reveal">
+          <p class="eyebrow">Competitive difference</p>
+          <h2>They are making CFD faster. We are making it&nbsp;agile.</h2>
+          <p class="body-copy">
+            A faster solver still runs once and waits. We run thousands of times before you open
+            your solver. The comparison is wrong — that is the point.
+          </p>
+        </div>
+
+        <div class="comp-grid reveal">
+          {competitors.map((c) => (
+            <div class="comp-card">
+              <p class="comp-type">{c.type}</p>
+              <p class="comp-body">{c.body}</p>
+              <p class="comp-contrast">{c.contrast}</p>
+            </div>
+          ))}
+        </div>
+
+        <div class="adv-block reveal">
+          <p class="eyebrow eyebrow--muted">Our four structural advantages</p>
+          <div class="adv-grid">
+            {advantages.map((a) => (
+              <div class="adv-item">
+                <span class="adv-n">{a.n}</span>
+                <div>
+                  <p class="adv-label">{a.label}</p>
+                  <p class="adv-body">{a.body}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── Section 5: Go-to-market ── -->
+    <section class="section why-gtm" id="go-to-market">
+      <div class="shell">
+        <div class="prose-block reveal">
+          <p class="eyebrow">Go-to-market</p>
+          <h2>Three phases. One direction.</h2>
+        </div>
+
+        <div class="phase-stack">
+          {phases.map((p, i) => (
+            <div class={`phase-card reveal`}>
+              <div class="phase-meta">
+                <p class="phase-label">{p.phase}</p>
+                <p class="phase-window">{p.window}</p>
+              </div>
+              <div class="phase-content">
+                <h3 class="phase-title">{p.title}</h3>
+                <p class="phase-body">{p.body}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- ── Proof stats ── -->
+    <section class="section why-proof">
+      <div class="shell">
+        <div class="prose-block reveal">
+          <p class="eyebrow eyebrow--muted">Traction</p>
+          <h2>The numbers so&nbsp;far.</h2>
+        </div>
+        <div class="stat-row stat-row--4 reveal">
+          {proofStats.map((s) => (
+            <div class="stat">
+              <p class="figure">{s.figure}</p>
+              <p class="figure-label">{s.label}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- ── CTA ── -->
+    <section class="why-cta-band">
+      <div class="shell why-cta-inner reveal">
+        <div>
+          <h2 class="why-cta-h">Run your first section before you read the docs.</h2>
+          <p class="why-cta-sub">No meshing. No licence. No setup. Open and free.</p>
+        </div>
+        <div class="why-cta-btns">
+          <a class="btn btn-primary" href={DEMO_URL}>try the live demo →</a>
+          <a class="btn btn-ghost-light" href={WAITLIST_URL}>join the waitlist</a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+  <Footer />
+</Base>
+
+<style>
+  /* ── Hero ── */
+  .why-hero {
+    border-bottom: 1px solid var(--hair);
+  }
+  .why-hero-inner {
+    max-width: 66ch;
+    padding-block-end: 0.5rem;
+  }
+  .why-tagline {
+    margin-block: 0.6rem 1.4rem;
+  }
+  .why-sub {
+    margin-bottom: 2rem;
+  }
+  .why-hero-btns {
+    display: flex;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+  }
+
+  /* ── Prose block ── */
+  .prose-block {
+    max-width: 60ch;
+    margin-bottom: clamp(2.5rem, 5vw, 3.5rem);
+  }
+  .prose-block h2 {
+    margin-block: 0.5rem 1.2rem;
+  }
+  .body-copy {
+    font-size: clamp(1rem, 1.3vw, 1.08rem);
+    line-height: 1.7;
+    color: var(--ink-soft);
+    max-width: 60ch;
+  }
+  .body-copy + .body-copy {
+    margin-top: 1rem;
+  }
+
+  /* ── Stat row ── */
+  .stat-row {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background: var(--hair);
+    border: 1px solid var(--hair);
+    border-radius: var(--radius);
+    overflow: hidden;
+  }
+  .stat-row--4 {
+    grid-template-columns: repeat(4, 1fr);
+  }
+  .stat {
+    background: var(--paper-2);
+    padding: 1.75rem;
+  }
+  .figure {
+    font-family: var(--font-mono);
+    font-size: clamp(1.5rem, 2.8vw, 2rem);
+    font-weight: 500;
+    color: var(--ink);
+    letter-spacing: -0.01em;
+    margin: 0 0 0.6rem;
+  }
+  .figure-label {
+    font-size: 0.88rem;
+    line-height: 1.5;
+    color: var(--muted);
+    margin: 0;
+  }
+
+  /* ── Problem ── */
+  .why-problem {
+    background: var(--panel);
+    border-top: 1px solid var(--hair);
+    border-bottom: 1px solid var(--hair);
+  }
+
+  /* ── What we built ── */
+  .cap-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1px;
+    background: var(--hair);
+    border: 1px solid var(--hair);
+    border-radius: var(--radius);
+    overflow: hidden;
+  }
+  .cap-card {
+    background: var(--paper-2);
+    padding: 1.75rem 1.5rem;
+  }
+  .cap-n {
+    font-family: var(--font-mono);
+    font-size: clamp(1.5rem, 2.5vw, 1.9rem);
+    font-weight: 500;
+    color: var(--accent);
+    letter-spacing: -0.01em;
+    margin: 0 0 0.4rem;
+  }
+  .cap-label {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--ink);
+    margin: 0 0 0.75rem;
+  }
+  .cap-body {
+    font-size: 0.9rem;
+    line-height: 1.55;
+    color: var(--muted);
+    margin: 0;
+  }
+
+  /* ── Vertical ── */
+  .why-vertical {
+    background: var(--panel);
+    border-top: 1px solid var(--hair);
+    border-bottom: 1px solid var(--hair);
+  }
+  .vertical-grid {
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: clamp(2.5rem, 6vw, 5rem);
+    align-items: start;
+  }
+  .vertical-grid h2 {
+    margin-block: 0.5rem 1.2rem;
+  }
+  .vertical-list {
+    list-style: none;
+    padding: 0;
+    margin: 1.5rem 0 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  .vertical-list li {
+    font-family: var(--font-mono);
+    font-size: 0.82rem;
+    color: var(--ink-soft);
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+  }
+  .vertical-list li::before {
+    content: "";
+    display: block;
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: var(--accent);
+    flex-shrink: 0;
+  }
+  .market-panel {
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+    background: var(--hair);
+    border: 1px solid var(--hair);
+    border-radius: var(--radius);
+    overflow: hidden;
+  }
+  .market-stat {
+    background: var(--paper-2);
+    padding: 1.5rem 1.75rem;
+  }
+
+  /* ── Competitive difference ── */
+  .comp-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1px;
+    background: var(--hair);
+    border: 1px solid var(--hair);
+    border-radius: var(--radius);
+    overflow: hidden;
+    margin-bottom: clamp(2.5rem, 5vw, 3.5rem);
+  }
+  .comp-card {
+    background: var(--paper-2);
+    padding: 1.75rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+  .comp-type {
+    font-family: var(--font-mono);
+    font-size: 0.78rem;
+    font-weight: 500;
+    letter-spacing: 0.03em;
+    color: var(--ink);
+    margin: 0;
+  }
+  .comp-body {
+    font-size: 0.9rem;
+    line-height: 1.6;
+    color: var(--muted);
+    margin: 0;
+    flex: 1;
+  }
+  .comp-contrast {
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    color: var(--accent);
+    margin: 0;
+    padding-top: 0.5rem;
+    border-top: 1px solid var(--hair);
+  }
+  .adv-block {
+    border-top: 1px solid var(--hair);
+    padding-top: clamp(2rem, 4vw, 3rem);
+  }
+  .adv-block .eyebrow {
+    margin-bottom: 1.75rem;
+  }
+  .adv-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem clamp(2rem, 5vw, 4rem);
+  }
+  .adv-item {
+    display: flex;
+    gap: 1.25rem;
+    align-items: flex-start;
+  }
+  .adv-n {
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    font-weight: 500;
+    color: var(--muted);
+    letter-spacing: 0.04em;
+    flex-shrink: 0;
+    padding-top: 0.2rem;
+  }
+  .adv-label {
+    font-family: var(--font-sans);
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: var(--ink);
+    margin: 0 0 0.4rem;
+  }
+  .adv-body {
+    font-size: 0.88rem;
+    line-height: 1.6;
+    color: var(--muted);
+    margin: 0;
+  }
+
+  /* ── Go-to-market ── */
+  .why-gtm {
+    background: var(--panel);
+    border-top: 1px solid var(--hair);
+    border-bottom: 1px solid var(--hair);
+  }
+  .phase-stack {
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+    background: var(--hair);
+    border: 1px solid var(--hair);
+    border-radius: var(--radius);
+    overflow: hidden;
+  }
+  .phase-card {
+    background: var(--paper-2);
+    padding: 1.75rem 2rem;
+    display: grid;
+    grid-template-columns: 11rem 1fr;
+    gap: clamp(1rem, 3vw, 2.5rem);
+  }
+  .phase-meta {
+    padding-top: 0.15rem;
+  }
+  .phase-label {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin: 0 0 0.3rem;
+  }
+  .phase-window {
+    font-family: var(--font-mono);
+    font-size: 0.78rem;
+    color: var(--muted);
+    margin: 0;
+  }
+  .phase-title {
+    font-family: var(--font-serif);
+    font-size: clamp(1.1rem, 1.7vw, 1.35rem);
+    color: var(--ink);
+    margin: 0 0 0.65rem;
+  }
+  .phase-body {
+    font-size: 0.92rem;
+    line-height: 1.65;
+    color: var(--muted);
+    margin: 0;
+    max-width: 62ch;
+  }
+
+  /* ── Proof ── */
+  .why-proof .prose-block {
+    margin-bottom: clamp(2rem, 4vw, 2.5rem);
+  }
+  .why-proof .prose-block h2 {
+    margin-block: 0.4rem 0;
+  }
+
+  /* ── CTA band ── */
+  .why-cta-band {
+    background: var(--ink);
+    color: var(--paper);
+    padding-block: clamp(3.5rem, 7vw, 5.5rem);
+  }
+  .why-cta-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 2rem;
+    flex-wrap: wrap;
+  }
+  .why-cta-h {
+    color: var(--paper);
+    font-size: clamp(1.5rem, 2.5vw, 2rem);
+    max-width: 24ch;
+    margin: 0 0 0.6rem;
+  }
+  .why-cta-sub {
+    color: #c9c4b8;
+    font-size: 1rem;
+    margin: 0;
+  }
+  .why-cta-btns {
+    display: flex;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+    flex-shrink: 0;
+  }
+
+  /* ── Responsive ── */
+  @media (max-width: 960px) {
+    .cap-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    .stat-row--4 {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  @media (max-width: 820px) {
+    .vertical-grid {
+      grid-template-columns: 1fr;
+    }
+    .market-panel {
+      flex-direction: row;
+      flex-wrap: wrap;
+    }
+    .market-stat {
+      flex: 1 1 40%;
+    }
+    .adv-grid {
+      grid-template-columns: 1fr;
+    }
+    .phase-card {
+      grid-template-columns: 1fr;
+      gap: 0.75rem;
+    }
+  }
+  @media (max-width: 720px) {
+    .stat-row {
+      grid-template-columns: 1fr;
+    }
+    .stat-row--4 {
+      grid-template-columns: 1fr 1fr;
+    }
+    .comp-grid {
+      grid-template-columns: 1fr;
+    }
+    .cap-grid {
+      grid-template-columns: 1fr;
+    }
+    .why-cta-inner {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+  }
+</style>

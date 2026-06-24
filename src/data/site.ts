@@ -8,7 +8,8 @@ export const CONTACT_EMAIL = 'hello@airfoillearner.com';
 export const WAITLIST_URL = `mailto:${CONTACT_EMAIL}?subject=AirfoilLearner%20waitlist`;
 
 export const NAV_LINKS = [
-  { label: 'how it works', href: '#how-it-works' },
-  { label: 'the science', href: '#science' },
-  { label: 'the team', href: '#footer' },
+  { label: 'why airfoillearner', href: '/why' },
+  { label: 'how it works', href: '/#how-it-works' },
+  { label: 'the science', href: '/#science' },
+  { label: 'the team', href: '/#footer' },
 ];
