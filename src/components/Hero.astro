@@ -1,7 +1,5 @@
 ---
 import { DEMO_URL } from "../data/site";
-import AirfoilSchematic from "./graphics/AirfoilSchematic.astro";
-import ReadoutCard from "./graphics/ReadoutCard.astro";
 ---
 
 <section class="hero" id="top">
@@ -26,13 +24,6 @@ import ReadoutCard from "./graphics/ReadoutCard.astro";
         80+ student and 15+ industry interviews
       </p>
     </div>
-
-    <div class="hero-art reveal">
-      <AirfoilSchematic />
-      <div class="hero-readout">
-        <ReadoutCard />
-      </div>
-    </div>
   </div>
 </section>
 
@@ -52,11 +43,10 @@ import ReadoutCard from "./graphics/ReadoutCard.astro";
   }
   .hero-inner {
     position: relative;
-    display: grid;
-    grid-template-columns: 1.04fr 0.96fr;
-    align-items: center;
-    gap: clamp(1.5rem, 4vw, 3.5rem);
     padding-block: clamp(3rem, 7vw, 5.5rem);
+  }
+  .hero-copy {
+    max-width: 52ch;
   }
   .hero-copy h1 {
     margin-bottom: 1.4rem;
@@ -83,25 +73,9 @@ import ReadoutCard from "./graphics/ReadoutCard.astro";
     padding-top: 1rem;
     max-width: 42ch;
   }
-  .hero-art {
-    position: relative;
-  }
-  .hero-readout {
-    position: absolute;
-    right: 0;
-    bottom: 0.5rem;
-  }
-
   @media (max-width: 880px) {
-    .hero-inner {
-      grid-template-columns: 1fr;
-      gap: 2.5rem;
-    }
     .brk {
       display: none;
-    }
-    .hero-art {
-      max-width: 460px;
     }
     .hero-grid-bg {
       -webkit-mask-image: radial-gradient(140% 70% at 50% 15%, #000 30%, transparent 80%);
