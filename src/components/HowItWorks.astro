@@ -6,17 +6,23 @@ import PipelineDiagram from "./graphics/PipelineDiagram.astro";
   <div class="shell">
     <div class="how-head reveal">
       <p class="eyebrow">How it works</p>
-      <h2>A screening layer, not a CFD replacement.</h2>
+      <h2>Every run counts.</h2>
       <p class="how-sub">
-        Most "AI for CFD" tools are a faster XFOIL with a nicer interface. AirfoilLearner is the
-        whole funnel: it decides which designs deserve expensive compute, and hands the rest a fast,
-        directionally-honest answer.
+        For the engineers who'll actually use it: here's what happens behind the score.
       </p>
     </div>
 
     <div class="how-pipe reveal">
       <PipelineDiagram />
     </div>
+
+    <p class="how-closing reveal">
+      The model chooses the next runs where it's least sure, so no run is wasted.
+    </p>
+    <p class="how-citation mono reveal">
+      Related research: Demir, Gorguluarslan &amp; Aradag (2023), robust wing shape optimisation
+      under model uncertainty, <em>Structural and Multidisciplinary Optimization</em> 66:93.
+    </p>
   </div>
 </section>
 
@@ -38,5 +44,17 @@ import PipelineDiagram from "./graphics/PipelineDiagram.astro";
     line-height: 1.6;
     color: var(--ink-soft);
     max-width: 52ch;
+  }
+  .how-closing {
+    font-family: var(--font-serif);
+    font-size: 1.15rem;
+    color: var(--ink);
+    margin-top: clamp(2.2rem, 4vw, 3rem);
+  }
+  .how-citation {
+    font-size: 0.74rem;
+    color: var(--muted);
+    max-width: 62ch;
+    margin-top: 0.9rem;
   }
 </style>

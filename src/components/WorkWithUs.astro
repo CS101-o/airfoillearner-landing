@@ -1,0 +1,119 @@
+---
+import { DEMO_URL, PILOT_URL, PARTNERS_URL } from "../data/site";
+---
+
+<section class="section pilot" id="pilot">
+  <div class="shell">
+    <div class="pilot-head reveal">
+      <p class="eyebrow">Work with us</p>
+      <h2>We're looking for pilot partners.</h2>
+    </div>
+
+    <div class="pilot-grid reveal">
+      <div class="pilot-card pilot-card--primary">
+        <p class="pc-label">Run a pilot</p>
+        <p class="pc-body">
+          Bring a real design problem. Free 2-week trial, then a 6-week pilot for £1,500, credited
+          against your first year. We measure the runs and days saved on your project.
+        </p>
+        <p class="pc-fit">Best for simulation consultancies and engineering SMEs.</p>
+        <a class="btn btn-primary" href={PILOT_URL}>Book a pilot conversation</a>
+      </div>
+
+      <div class="pilot-card">
+        <p class="pc-label">Try the free demo</p>
+        <p class="pc-body">
+          Run an airfoil in your browser. No meshing, no licence, no setup. The demo stays free.
+        </p>
+        <a class="btn btn-ghost-light" href={DEMO_URL}>Open the demo</a>
+      </div>
+
+      <div class="pilot-card">
+        <p class="pc-label">Partners and investors</p>
+        <p class="pc-body">
+          We're raising pre-seed by Q2 2027 and looking for partnerships with simulation
+          consultancies and defence accelerators.
+        </p>
+        <a class="btn btn-ghost-light" href={PARTNERS_URL}>Get in touch</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .pilot {
+    background: var(--ink);
+  }
+  .pilot-head h2 {
+    color: var(--paper);
+    max-width: 22ch;
+  }
+  .pilot-head {
+    margin-bottom: clamp(2.2rem, 4vw, 3rem);
+  }
+  .pilot-head .eyebrow {
+    color: #e8896f;
+  }
+
+  .pilot-grid {
+    display: grid;
+    grid-template-columns: 1.3fr 1fr 1fr;
+    gap: 1.25rem;
+    align-items: stretch;
+  }
+  .pilot-card {
+    background: rgba(248, 244, 234, 0.04);
+    border: 1px solid rgba(248, 244, 234, 0.14);
+    border-radius: var(--radius);
+    padding: 1.9rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.9rem;
+  }
+  .pilot-card--primary {
+    background: var(--paper);
+    border-color: var(--paper);
+    padding: 2.3rem;
+    gap: 1.1rem;
+  }
+  .pc-label {
+    font-family: var(--font-mono);
+    font-size: 0.78rem;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--paper);
+    margin: 0;
+  }
+  .pilot-card--primary .pc-label {
+    color: var(--accent);
+    font-size: 0.85rem;
+  }
+  .pc-body {
+    font-size: 0.92rem;
+    line-height: 1.6;
+    color: #c9c4b8;
+    margin: 0;
+    flex: 1;
+  }
+  .pilot-card--primary .pc-body {
+    color: var(--ink-soft);
+    font-size: 1rem;
+  }
+  .pc-fit {
+    font-family: var(--font-mono);
+    font-size: 0.76rem;
+    color: var(--muted);
+    margin: 0;
+  }
+  .pilot-card .btn {
+    align-self: flex-start;
+    margin-top: 0.3rem;
+  }
+
+  @media (max-width: 880px) {
+    .pilot-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

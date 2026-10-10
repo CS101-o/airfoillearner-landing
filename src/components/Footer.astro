@@ -1,11 +1,5 @@
 ---
 import { DEMO_URL, CONTACT_EMAIL } from "../data/site";
-
-const team = [
-  { name: "Baramee Thanawarothon", role: "Co-founder · BD & partnerships" },
-  { name: "Kaan", role: "Co-founder · technical lead" },
-  { name: "Jackie", role: "Commercial" },
-];
 ---
 
 <footer class="footer" id="footer">
@@ -26,7 +20,7 @@ const team = [
         <p class="foot-line">
           An ML surrogate that screens airfoil geometries before they reach your CFD solver.
         </p>
-        <p class="foot-prog mono">University of Manchester · Masood Entrepreneurship Centre</p>
+        <p class="foot-prog mono">University of Manchester · Masood Entrepreneurship Centre · Manchester Venture Builder</p>
       </div>
 
       <div class="foot-cols">
@@ -38,19 +32,11 @@ const team = [
         </div>
         <div class="foot-col">
           <p class="foot-h">Team</p>
-          {
-            team.map((t) => (
-              <span class="foot-person">
-                {t.name}
-                <em>{t.role}</em>
-              </span>
-            ))
-          }
+          <a href="/#team">Meet the team</a>
         </div>
         <div class="foot-col">
           <p class="foot-h">Contact</p>
           <a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a>
-          <a href="https://www.linkedin.com/" target="_blank" rel="noopener">LinkedIn</a>
         </div>
       </div>
     </div>
@@ -124,17 +110,6 @@ const team = [
   }
   .foot-col a:hover {
     color: var(--ink);
-  }
-  .foot-person {
-    display: flex;
-    flex-direction: column;
-    color: var(--ink);
-    font-size: 0.9rem;
-  }
-  .foot-person em {
-    font-style: normal;
-    font-size: 0.78rem;
-    color: var(--muted);
   }
   .foot-bottom {
     display: flex;

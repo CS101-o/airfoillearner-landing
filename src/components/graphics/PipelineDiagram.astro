@@ -2,28 +2,23 @@
 const stages = [
   {
     n: "01",
-    title: "XFOIL sweep",
-    desc: "Every candidate geometry gets a fast 2D pass in under 5 seconds.",
+    title: "Check before running",
+    desc: "Rules and a learned filter skip designs likely to fail.",
   },
   {
     n: "02",
-    title: "BNN uncertainty",
-    desc: "A Bayesian net scores where the surrogate is unsure and flags bad training data.",
+    title: "Prepare and run automatically",
+    desc: "Simulations set up, run and quality-checked without manual work.",
   },
   {
     n: "03",
-    title: "RANS escalation",
-    desc: "Only the top 10–20 candidates are escalated to expensive higher-fidelity CFD.",
+    title: "Learn only from clean results",
+    desc: "Only runs that pass quality checks become training data.",
   },
   {
     n: "04",
-    title: "Surrogate + FlowSense",
-    desc: "Real-time Cl, Cd, Cm plus a plain-language read on which parameter to move.",
-  },
-  {
-    n: "05",
-    title: "OpenFOAM handoff",
-    desc: "The shortlist drops cleanly into your 3D solver — warm-started, not cold.",
+    title: "Answers with a validity envelope",
+    desc: "Predictions in seconds, each showing how far to trust it.",
   },
 ];
 ---
@@ -47,7 +42,7 @@ const stages = [
 <style>
   .pipe {
     display: grid;
-    grid-template-columns: repeat(5, 1fr);
+    grid-template-columns: repeat(4, 1fr);
     gap: 0;
   }
   .stage {

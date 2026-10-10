@@ -1,0 +1,181 @@
+---
+const steps = [
+  { n: "01", title: "You put in", body: "All your design ideas, not just the few picked by gut feeling." },
+  { n: "02", title: "One standard check", body: "Every design scored the same way, in seconds, on every project." },
+  { n: "03", title: "You get", body: "A success score per design, with a range showing how far to trust it." },
+  { n: "04", title: "Result", body: "Run only what's worth running." },
+];
+
+const scores = [
+  { label: "Design A", value: 92, band: 3 },
+  { label: "Design B", value: 74, band: 6 },
+  { label: "Design C", value: 31, band: 12 },
+];
+---
+
+<section class="section solution" id="solution">
+  <div class="shell">
+    <div class="solution-head reveal">
+      <p class="eyebrow">Our solution</p>
+      <h2>We standardise pre-testing.</h2>
+    </div>
+
+    <div class="solution-grid reveal">
+      {
+        steps.map((s) => (
+          <div class="sol-step">
+            <p class="n">{s.n}</p>
+            <h3 class="t">{s.title}</h3>
+            <p class="d">{s.body}</p>
+            {s.n === "03" && (
+              <div class="score-bars">
+                {scores.map((sc) => (
+                  <div class="score-row">
+                    <span class="score-label">{sc.label}</span>
+                    <span class="score-bar">
+                      <span class="score-fill" style={`width:${sc.value}%`} />
+                    </span>
+                    <span class="score-value">
+                      {sc.value}% <span class="band">(±{sc.band})</span>
+                    </span>
+                  </div>
+                ))}
+              </div>
+            )}
+          </div>
+        ))
+      }
+    </div>
+
+    <p class="solution-support reveal">
+      An applications engineer told us that automating their workflow alone cut process time by up
+      to four times. We go one step earlier: deciding what to run at all.
+    </p>
+  </div>
+</section>
+
+<style>
+  .solution {
+    background: var(--panel);
+    border-top: 1px solid var(--hair);
+    border-bottom: 1px solid var(--hair);
+  }
+  .solution-head {
+    max-width: 60ch;
+    margin-bottom: clamp(2.5rem, 5vw, 3.5rem);
+  }
+
+  .solution-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0;
+    margin-bottom: clamp(2rem, 4vw, 3rem);
+  }
+  .sol-step {
+    padding: 0 1.1rem;
+    border-left: 1px solid var(--hair-strong);
+  }
+  .sol-step:first-child {
+    padding-left: 0;
+    border-left: 0;
+  }
+  .n {
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    letter-spacing: 0.14em;
+    color: var(--muted);
+    margin: 0 0 0.6rem;
+  }
+  .t {
+    font-family: var(--font-sans);
+    font-size: 1rem;
+    font-weight: 500;
+    color: var(--ink);
+    margin: 0 0 0.5rem;
+  }
+  .d {
+    font-size: 0.88rem;
+    line-height: 1.55;
+    color: var(--muted);
+    margin: 0;
+  }
+
+  .score-bars {
+    margin-top: 1.1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  .score-row {
+    display: grid;
+    grid-template-columns: 3.2rem 1fr auto;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  .score-label {
+    font-family: var(--font-mono);
+    font-size: 0.68rem;
+    color: var(--muted);
+  }
+  .score-bar {
+    position: relative;
+    height: 6px;
+    border-radius: 3px;
+    background: var(--hair);
+    overflow: hidden;
+  }
+  .score-fill {
+    position: absolute;
+    inset: 0;
+    width: 0;
+    background: var(--accent);
+    border-radius: 3px;
+  }
+  .score-value {
+    font-family: var(--font-mono);
+    font-size: 0.68rem;
+    color: var(--ink);
+    white-space: nowrap;
+  }
+  .score-value .band {
+    color: var(--muted);
+  }
+
+  .solution-support {
+    font-size: clamp(1rem, 1.3vw, 1.08rem);
+    line-height: 1.65;
+    color: var(--ink-soft);
+    max-width: 58ch;
+    border-top: 1px solid var(--hair-strong);
+    padding-top: 1.4rem;
+  }
+
+  @media (max-width: 960px) {
+    .solution-grid {
+      grid-template-columns: repeat(2, 1fr);
+      row-gap: 2rem;
+    }
+    .sol-step:nth-child(2) {
+      border-left: 1px solid var(--hair-strong);
+    }
+    .sol-step:nth-child(3) {
+      padding-left: 0;
+      border-left: 0;
+    }
+  }
+  @media (max-width: 560px) {
+    .solution-grid {
+      grid-template-columns: 1fr;
+    }
+    .sol-step {
+      padding-left: 0;
+      border-left: 0;
+      padding-top: 1.6rem;
+      border-top: 1px solid var(--hair-strong);
+    }
+    .sol-step:first-child {
+      padding-top: 0;
+      border-top: 0;
+    }
+  }
+</style>

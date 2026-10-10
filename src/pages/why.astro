@@ -2,7 +2,14 @@
 import Base from "../layouts/Base.astro";
 import Nav from "../components/Nav.astro";
 import Footer from "../components/Footer.astro";
-import { DEMO_URL, WAITLIST_URL } from "../data/site";
+import { DEMO_URL } from "../data/site";
+
+// {{SUBSCRIPTION_PRICE}}: annual subscription price the £1,500 pilot credits against.
+const SUBSCRIPTION_PRICE = "{{SUBSCRIPTION_PRICE}}";
+// {{PHASE_3}}: what happens after month 12 — supplied by the founders.
+const PHASE_3 = "{{PHASE_3}}";
+// {{WAITLIST_COUNT}}: must match the homepage hero exactly.
+const WAITLIST_COUNT = "{{WAITLIST_COUNT}}";
 
 const costStats = [
   { figure: "£150", label: "idle salary cost per CFD run, before a single compute invoice is counted" },
@@ -50,21 +57,21 @@ const advantages = [
 const phases = [
   {
     phase: "Phase 1",
-    window: "Now → 6 months",
-    title: "Land and prove",
-    body: "Close the current industry pilot as a paid engagement. Use real-world data to produce a one-page accuracy benchmark — specific error numbers, real engineer quotes, validated against measured data. Convert the existing waitlist. Get the first 5 paying subscribers at £80/mo.",
+    window: "0–6 months",
+    title: "Simulation consultancies",
+    body: `Close the current industry pilot as a paid engagement. Use real-world data to produce a one-page accuracy benchmark — specific error numbers, real engineer quotes, validated against measured data. Convert the existing waitlist. Get the first 5 paying pilots: free 2-week trial, then a £1,500 pilot credited against an annual subscription of ${SUBSCRIPTION_PRICE}.`,
   },
   {
     phase: "Phase 2",
-    window: "3–9 months",
-    title: "Expand through domain networks",
-    body: "University and alumni networks for warm introductions into aerospace SMEs. Apply to clean energy and aerospace accelerator programmes. Target CFD consultancies as distribution — one consultancy using AirfoilLearner on every client project is worth more than 50 individual subscriptions. Activate international connections for a second named pilot outside the UK.",
+    window: "6–12 months",
+    title: "Engineering SMEs",
+    body: "Expand to engineering SMEs once the consultancy pilots have proven the runs and days saved. University and alumni networks for warm introductions into aerospace SMEs. Target CFD consultancies as distribution — one consultancy using AirfoilLearner on every client project is worth more than 50 individual subscriptions.",
   },
   {
     phase: "Phase 3",
-    window: "6–12 months",
-    title: "Raise",
-    body: "One paid pilot with published accuracy data. 20+ paying subscribers. Two or three domain-credible advisors. Warm introductions into the deep-tech investor community. Target £300k–£500k pre-seed. Use of funds: one senior CFD engineer or advisor, expansion into the next geometry domain beyond airfoils.",
+    window: "12 months +",
+    title: PHASE_3,
+    body: PHASE_3,
   },
 ];
 
@@ -75,8 +82,9 @@ const marketStats = [
 ];
 
 const proofStats = [
-  { figure: "80+", label: "aerospace engineers interviewed" },
-  { figure: "60+", label: "on the waitlist, growing 200% month on month" },
+  { figure: "80+", label: "student interviews" },
+  { figure: "15+", label: "industry interviews" },
+  { figure: WAITLIST_COUNT, label: "on the waitlist" },
   { figure: "50,000+", label: "simulations in training corpus" },
   { figure: "1", label: "named industry pilot confirmed" },
 ];
@@ -101,8 +109,8 @@ const proofStats = [
             the engineers that enterprise tools have never served.
           </p>
           <div class="why-hero-btns">
-            <a class="btn btn-primary" href={DEMO_URL}>try the live demo →</a>
-            <a class="btn btn-outline" href={WAITLIST_URL}>join the waitlist</a>
+            <a class="btn btn-primary" href="/#pilot">run a pilot →</a>
+            <a class="btn btn-outline" href={DEMO_URL}>try the free demo</a>
           </div>
         </div>
       </div>
@@ -277,7 +285,7 @@ const proofStats = [
           <p class="eyebrow eyebrow--muted">Traction</p>
           <h2>The numbers so&nbsp;far.</h2>
         </div>
-        <div class="stat-row stat-row--4 reveal">
+        <div class="stat-row stat-row--5 reveal">
           {proofStats.map((s) => (
             <div class="stat">
               <p class="figure">{s.figure}</p>
@@ -296,8 +304,8 @@ const proofStats = [
           <p class="why-cta-sub">No meshing. No licence. No setup. Open and free.</p>
         </div>
         <div class="why-cta-btns">
-          <a class="btn btn-primary" href={DEMO_URL}>try the live demo →</a>
-          <a class="btn btn-ghost-light" href={WAITLIST_URL}>join the waitlist</a>
+          <a class="btn btn-primary" href="/#pilot">run a pilot →</a>
+          <a class="btn btn-ghost-light" href={DEMO_URL}>try the free demo</a>
         </div>
       </div>
     </section>
@@ -355,8 +363,8 @@ const proofStats = [
     border-radius: var(--radius);
     overflow: hidden;
   }
-  .stat-row--4 {
-    grid-template-columns: repeat(4, 1fr);
+  .stat-row--5 {
+    grid-template-columns: repeat(5, 1fr);
   }
   .stat {
     background: var(--paper-2);
@@ -655,7 +663,7 @@ const proofStats = [
     .cap-grid {
       grid-template-columns: repeat(2, 1fr);
     }
-    .stat-row--4 {
+    .stat-row--5 {
       grid-template-columns: repeat(2, 1fr);
     }
   }
@@ -682,7 +690,7 @@ const proofStats = [
     .stat-row {
       grid-template-columns: 1fr;
     }
-    .stat-row--4 {
+    .stat-row--5 {
       grid-template-columns: 1fr 1fr;
     }
     .comp-grid {

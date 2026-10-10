@@ -2,6 +2,9 @@
 import { DEMO_URL } from "../data/site";
 import AirfoilSchematic from "./graphics/AirfoilSchematic.astro";
 import ReadoutCard from "./graphics/ReadoutCard.astro";
+
+// {{WAITLIST_COUNT}}: current waitlist size, supplied by the founders.
+const WAITLIST_COUNT = "{{WAITLIST_COUNT}}";
 ---
 
 <section class="hero" id="top">
@@ -10,22 +13,20 @@ import ReadoutCard from "./graphics/ReadoutCard.astro";
     <div class="hero-copy reveal">
       <p class="eyebrow">ML surrogate · upstream of CFD</p>
       <h1>
-        Screen an airfoil in 1.9&nbsp;ms —<br class="brk" /> before you spend hours in CFD.
+        Know which designs are worth simulating,<br class="brk" /> before you run them.
       </h1>
       <p class="hero-sub">
-        AirfoilLearner predicts Cl, Cd and Cm for any 2D section in real time. Fail fast on the weak
-        geometries and save the cluster for the designs worth simulating. It sits upstream of your
-        solver. It doesn't replace it.
+        We standardise pre-testing for simulation consultancies and engineering SMEs, so fewer runs
+        are wasted and more margin is kept.
       </p>
       <div class="hero-btns">
-        <a class="btn btn-primary" href={DEMO_URL}>
-          try the live demo →
+        <a class="btn btn-primary" href="#pilot">
+          run a pilot →
         </a>
-        <a class="btn btn-outline" href="#how-it-works">how it works</a>
+        <a class="btn btn-outline" href={DEMO_URL}>try the free demo</a>
       </div>
       <p class="hero-proof">
-        80+ aerospace engineers interviewed · 60+ on the waitlist<br />
-        trained on 50,000+ CFD simulations · UIUC airfoil database
+        80+ student and 15+ industry interviews · {WAITLIST_COUNT} on the waitlist
       </p>
     </div>
 

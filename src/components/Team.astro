@@ -1,0 +1,137 @@
+---
+// {{KAAN_RESPONSIBILITY}}, {{EMRE_RESPONSIBILITY}}, {{MICKY_RESPONSIBILITY}}, {{BARAMEE_PUBLIC_NAME}}
+// and {{ADVISORS_FULL_LIST}} are supplied by the founders — see the restructure summary.
+const KAAN_RESPONSIBILITY = "{{KAAN_RESPONSIBILITY}}";
+const EMRE_RESPONSIBILITY = "{{EMRE_RESPONSIBILITY}}";
+const MICKY_RESPONSIBILITY = "{{MICKY_RESPONSIBILITY}}";
+const BARAMEE_PUBLIC_NAME = "{{BARAMEE_PUBLIC_NAME}}";
+const ADVISORS_FULL_LIST = "{{ADVISORS_FULL_LIST}}";
+
+const team = [
+  {
+    name: "Kaan Oktem",
+    role: "Chief Executive",
+    does: `${KAAN_RESPONSIBILITY}; optimisation work`,
+    background: "Computer Science, University of Manchester",
+  },
+  {
+    name: "Ege Artan",
+    role: "Chief Product",
+    does: "Meshing and dataset pipeline",
+    background: "UTMIST research group, Toronto; author of three papers",
+  },
+  {
+    name: "Davut Karatas",
+    role: "Chief Technology",
+    does: "Surrogate model and training",
+    background: "Computer Science; UTMIST, Toronto",
+  },
+  {
+    name: "Ahmet Emre Arslan",
+    role: "Engineer",
+    does: EMRE_RESPONSIBILITY,
+    background: "Aerospace Engineer; TAI; Von Karman Institute for Fluid Dynamics",
+  },
+  {
+    name: `${BARAMEE_PUBLIC_NAME} Thanawarothon`,
+    role: "Chief Revenue",
+    does: MICKY_RESPONSIBILITY,
+    background: "Former venture capital analyst, TK & Partners (deep tech); Electrical Engineering, University of Manchester",
+  },
+  {
+    name: "Jackie Li",
+    role: "Business",
+    does: "Commercial pipeline and CRM",
+    background: "Economics and Finance, University of Manchester",
+  },
+];
+---
+
+<section class="section team" id="team">
+  <div class="shell">
+    <div class="team-head reveal">
+      <p class="eyebrow">The team</p>
+      <h2>Built around the problem.</h2>
+    </div>
+
+    <div class="team-grid reveal">
+      {
+        team.map((t) => (
+          <div class="team-card">
+            <p class="tc-name">{t.name}</p>
+            <p class="tc-role mono">{t.role}</p>
+            <p class="tc-does">{t.does}</p>
+            <p class="tc-bg">{t.background}</p>
+          </div>
+        ))
+      }
+    </div>
+
+    <p class="team-advisors mono reveal">Advisors and programmes: {ADVISORS_FULL_LIST}</p>
+  </div>
+</section>
+
+<style>
+  .team {
+    border-top: 1px solid var(--hair);
+  }
+  .team-head {
+    margin-bottom: clamp(2.2rem, 4vw, 3rem);
+  }
+
+  .team-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background: var(--hair);
+    border: 1px solid var(--hair);
+    border-radius: var(--radius);
+    overflow: hidden;
+    margin-bottom: 1.6rem;
+  }
+  .team-card {
+    background: var(--paper-2);
+    padding: 1.6rem 1.5rem;
+  }
+  .tc-name {
+    font-size: 1.02rem;
+    font-weight: 500;
+    color: var(--ink);
+    margin: 0 0 0.3rem;
+  }
+  .tc-role {
+    font-size: 0.72rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin: 0 0 0.9rem;
+  }
+  .tc-does {
+    font-size: 0.9rem;
+    line-height: 1.5;
+    color: var(--ink-soft);
+    margin: 0 0 0.6rem;
+  }
+  .tc-bg {
+    font-size: 0.8rem;
+    line-height: 1.5;
+    color: var(--muted);
+    margin: 0;
+  }
+
+  .team-advisors {
+    font-size: 0.78rem;
+    color: var(--muted);
+  }
+
+  @media (max-width: 880px) {
+    .team-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  @media (max-width: 560px) {
+    .team-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

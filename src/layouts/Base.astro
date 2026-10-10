@@ -14,9 +14,11 @@ interface Props {
 }
 
 const {
-  title = "AirfoilLearner — screen airfoils in milliseconds, before CFD",
-  description = "An ML surrogate that predicts Cl, Cd and Cm for any 2D airfoil section in real time. Fail fast on weak geometries and save the cluster for the designs worth simulating. A screening layer upstream of CFD — not a replacement.",
+  title = "AirfoilLearner — know which designs are worth simulating, before you run them",
+  description = "We standardise pre-testing for simulation consultancies and engineering SMEs, so fewer runs are wasted and more margin is kept.",
 } = Astro.props;
+
+const canonical = new URL(Astro.url.pathname, Astro.site);
 ---
 
 <!doctype html>
@@ -27,10 +29,11 @@ const {
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <title>{title}</title>
     <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
     <meta property="og:type" content="website" />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
-    <meta property="og:url" content="https://airfoillearner.com" />
+    <meta property="og:url" content={canonical} />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="theme-color" content="#f4f1e9" />
   </head>

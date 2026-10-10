@@ -5,11 +5,15 @@
 export const DEMO_URL = '/demo';
 
 export const CONTACT_EMAIL = 'hello@airfoillearner.com';
-export const WAITLIST_URL = `mailto:${CONTACT_EMAIL}?subject=AirfoilLearner%20waitlist`;
+
+// {{PILOT_BOOKING_LINK}}: swap for a real scheduling link once the founders supply one.
+export const PILOT_URL = `mailto:${CONTACT_EMAIL}?subject=Pilot%20enquiry`;
+export const PARTNERS_URL = `mailto:${CONTACT_EMAIL}?subject=Partnership`;
 
 export const NAV_LINKS = [
   { label: 'why airfoillearner', href: '/why' },
   { label: 'how it works', href: '/#how-it-works' },
   { label: 'the science', href: '/#science' },
-  { label: 'the team', href: '/#footer' },
+  { label: 'work with us', href: '/#pilot' },
+  { label: 'the team', href: '/#team' },
 ];
