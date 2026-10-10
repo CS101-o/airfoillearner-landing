@@ -12,8 +12,7 @@ export const PARTNERS_URL = `mailto:${CONTACT_EMAIL}?subject=Partnership`;
 
 export const NAV_LINKS = [
   { label: 'why airfoillearner', href: '/why' },
-  { label: 'how it works', href: '/#how-it-works' },
-  { label: 'the science', href: '/#science' },
+  { label: 'our solution', href: '/#solution' },
   { label: 'work with us', href: '/#pilot' },
   { label: 'the team', href: '/#team' },
 ];
