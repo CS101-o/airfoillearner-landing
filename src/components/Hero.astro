@@ -2,9 +2,6 @@
 import { DEMO_URL } from "../data/site";
 import AirfoilSchematic from "./graphics/AirfoilSchematic.astro";
 import ReadoutCard from "./graphics/ReadoutCard.astro";
-
-// {{WAITLIST_COUNT}}: current waitlist size, supplied by the founders.
-const WAITLIST_COUNT = "{{WAITLIST_COUNT}}";
 ---
 
 <section class="hero" id="top">
@@ -26,7 +23,7 @@ const WAITLIST_COUNT = "{{WAITLIST_COUNT}}";
         <a class="btn btn-outline" href={DEMO_URL}>try the free demo</a>
       </div>
       <p class="hero-proof">
-        80+ student and 15+ industry interviews · {WAITLIST_COUNT} on the waitlist
+        80+ student and 15+ industry interviews
       </p>
     </div>
 
